@@ -4,6 +4,9 @@ namespace Login
 {
     public partial class Form1 : Form
     {
+
+        List<string> listaUsuario = new List<string>() { "neymar.jr", "pablo.vitar","naruto"};
+        List<string> listaSenha = new List<string>() { "Bruna", "1234","7777" };
         public Form1()
         {
             InitializeComponent();
@@ -11,13 +14,11 @@ namespace Login
 
         private void Entrar_Click(object sender, EventArgs e)
         {
-            String us = "Thiago Martiro"; //String_Usamos_para_Texto
-            String sn = "1234"; //Declaramos_Variaveis
-
-            String usuario = TxtUsuario.Text; //Estamos_Pegando_Usuario_Do_Forms
+           
+            String usuarioBuscado = TxtUsuario.Text; //Estamos_Pegando_Usuario_Do_Forms
             String senha = TxtSenha.Text; //Estamos_Pegando_Senha_Do_Forms
 
-            if  (string.IsNullOrWhiteSpace(usuario))//Se_o_Usuario_Estiver_Nulo_Ou_Vazio//Utilizamos_IF_Para_CondiçãoVerdadeiraOuFalsa
+            if  (string.IsNullOrWhiteSpace(usuarioBuscado))//Se_o_Usuario_Estiver_Nulo_Ou_Vazio//Utilizamos_IF_Para_CondiçãoVerdadeiraOuFalsa
             {
                 LbResultado.Text = "Preencha o usuário";//Usamos_Para_Mostrar_O_Resultado
                 LbResultado.ForeColor = Color.Red;
@@ -30,18 +31,28 @@ namespace Login
                 return;//Faz_O_Lopin_Para_estiver_vazio
             }
 
-            if (usuario == us & sn == senha) //Se_os_dados_estiverem_certos_ira_aparecer_a_Mensagem_abaixo
+            int posicaoUsuarioEncontrado = -1;
+            for (int i = 0; i < listaUsuario.Count; i++)
+            {
+                if (usuarioBuscado == listaUsuario[i])
+                {
+                    posicaoUsuarioEncontrado = i;
+                  
+                }
+            }
+            if (posicaoUsuarioEncontrado == -1 || senha != "1234")
+            {
+                LbResultado.Text = "Usuário ou Senha incorretos...";
+                LbResultado.ForeColor = Color.Red;
+                return;
+            }
+            else
             {
                 LbResultado.Text = "Autenticado com sucesso!";
                 LbResultado.ForeColor = Color.Green;
             }
-            else
-            {
-                LbResultado.Text = "Usuário ou Senha incorretos...";
-                LbResultado.ForeColor = Color.Red;
 
-
-            }
+            
         }
     }
 }
