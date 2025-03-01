@@ -1,3 +1,4 @@
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 
 namespace Login
@@ -5,8 +6,8 @@ namespace Login
     public partial class Form1 : Form
     {
 
-        List<string> listaUsuario = new List<string>() { "neymar.jr", "pablo.vitar","naruto"};
-        List<string> listaSenha = new List<string>() { "Bruna", "1234","7777" };
+        List<string> listaUsuario = new List<string>() { "neymar.jr", "pablo.vitar", "naruto" };
+        List<string> listaSenha = new List<string>() { "Bruna", "1234", "7777" };
         public Form1()
         {
             InitializeComponent();
@@ -14,11 +15,11 @@ namespace Login
 
         private void Entrar_Click(object sender, EventArgs e)
         {
-           
+
             String usuarioBuscado = TxtUsuario.Text; //Estamos_Pegando_Usuario_Do_Forms
             String senha = TxtSenha.Text; //Estamos_Pegando_Senha_Do_Forms
 
-            if  (string.IsNullOrWhiteSpace(usuarioBuscado))//Se_o_Usuario_Estiver_Nulo_Ou_Vazio//Utilizamos_IF_Para_CondiçãoVerdadeiraOuFalsa
+            if (string.IsNullOrWhiteSpace(usuarioBuscado))//Se_o_Usuario_Estiver_Nulo_Ou_Vazio//Utilizamos_IF_Para_CondiçãoVerdadeiraOuFalsa
             {
                 LbResultado.Text = "Preencha o usuário";//Usamos_Para_Mostrar_O_Resultado
                 LbResultado.ForeColor = Color.Red;
@@ -37,7 +38,7 @@ namespace Login
                 if (usuarioBuscado == listaUsuario[i])
                 {
                     posicaoUsuarioEncontrado = i;
-                  
+
                 }
             }
             if (posicaoUsuarioEncontrado == -1 || senha != "1234")
@@ -52,7 +53,36 @@ namespace Login
                 LbResultado.ForeColor = Color.Green;
             }
 
-            
+
         }
+
+       
+
+        private void New_Click(object sender, EventArgs e)
+        {
+            String NovoUs = Newus.Text;
+            String NovaSe = Novasenha.Text;
+
+            Boolean Usuario_encontrado=false;
+            for (int i = 0;i<listaUsuario.Count;i++)
+            {
+                if (NovoUs==listaUsuario[i])
+                {
+                    Usuario_encontrado= true;
+                }
+            }
+            if (Usuario_encontrado == false)
+            {
+              listaUsuario.Add(NovoUs);
+              listaSenha.Add(NovaSe);
+              resultado.Text = "Cadastrado com sucesso";
+            }
+            else
+            {
+                resultado.Text = "Ja exite";
+            }
+
+        }
+
     }
 }
