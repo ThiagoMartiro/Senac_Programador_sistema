@@ -6,7 +6,7 @@ namespace Login
     public partial class Form1 : Form
     {
 
-        List<string> listaUsuario = new List<string>() { "neymar.jr", "pablo.vitar", "naruto" };
+        List<string> listaUsuario = new List<string>() { "neymar.jr", "Thiago", "naruto" };
         List<string> listaSenha = new List<string>() { "Bruna", "1234", "7777" };
         public Form1()
         {
@@ -56,30 +56,71 @@ namespace Login
 
         }
 
-       
+
 
         private void New_Click(object sender, EventArgs e)
         {
             String NovoUs = Newus.Text;
             String NovaSe = Novasenha.Text;
-
-            Boolean Usuario_encontrado=false;
-            for (int i = 0;i<listaUsuario.Count;i++)
+            
+            if (string.IsNullOrWhiteSpace(NovoUs))
             {
-                if (NovoUs==listaUsuario[i])
+                resultado.Text = "Usuario obrigatorio";
+            }
+            if (string.IsNullOrWhiteSpace(NovaSe))
+            {
+                resultado.Text = "Senha Obrigatoria";
+                return;
+            }
+
+            if (NovaSe.Length < 8)
+            {
+                resultado.Text = "É necessario a senha ter pelo menos 8 digitos";
+                return;
+            }
+
+            if (!NovaSe.Any(char.IsUpper))
+            {
+                resultado.Text = "Senha precisa ter no mínimo uma letra maiuscula";
+                return;
+            }
+
+            if (!NovaSe.Any(char.IsLower))
+            {
+                resultado.Text = "Senha precisa ter no mínimo uma letra minuscula";
+                return;
+            }
+
+            if (!NovaSe.Any(char.IsNumber))
+            {
+                resultado.Text = "Senha precisa ter no mínimo um número";
+                return;
+            }
+
+            if (!NovaSe.Any(char.IsPunctuation))
+            {
+                resultado.Text = "Senha precisa ter um caracter especial ";
+                return;
+            }
+
+
+            Boolean Usuario_encontrado = false;
+            for (int i = 0; i < listaUsuario.Count; i++)
+            {
+                if (NovoUs == listaUsuario[i])
                 {
-                    Usuario_encontrado= true;
+                    Usuario_encontrado = true;
                 }
             }
             if (Usuario_encontrado == false)
             {
-              listaUsuario.Add(NovoUs);
-              listaSenha.Add(NovaSe);
-              resultado.Text = "Cadastrado com sucesso";
+                listaUsuario.Add(NovoUs);
+                listaSenha.Add(NovaSe);
+                resultado.Text = "Cadastrado com sucesso";
             }
             else
             {
-                resultado.Text = "Ja exite";
+                resultado.Text = "Ja existe";
             }
 
         }
