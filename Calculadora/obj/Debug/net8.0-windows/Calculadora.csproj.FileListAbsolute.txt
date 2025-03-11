@@ -1,0 +1,17 @@
+D:\Senac_Programador_sistema\Calculadora\bin\Debug\net8.0-windows\Calculadora.exe
+D:\Senac_Programador_sistema\Calculadora\bin\Debug\net8.0-windows\Calculadora.deps.json
+D:\Senac_Programador_sistema\Calculadora\bin\Debug\net8.0-windows\Calculadora.runtimeconfig.json
+D:\Senac_Programador_sistema\Calculadora\bin\Debug\net8.0-windows\Calculadora.dll
+D:\Senac_Programador_sistema\Calculadora\bin\Debug\net8.0-windows\Calculadora.pdb
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.Form1.resources
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.csproj.GenerateResource.cache
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.GeneratedMSBuildEditorConfig.editorconfig
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.AssemblyInfoInputs.cache
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.AssemblyInfo.cs
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.csproj.CoreCompileInputs.cache
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.sourcelink.json
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.dll
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\refint\Calculadora.dll
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.pdb
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.genruntimeconfig.cache
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\ref\Calculadora.dll
