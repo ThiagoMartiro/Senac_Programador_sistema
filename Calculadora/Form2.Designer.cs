@@ -47,40 +47,40 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(5, 34);
+            label1.Location = new Point(71, 32);
             label1.Name = "label1";
-            label1.Size = new Size(92, 15);
+            label1.Size = new Size(70, 15);
             label1.TabIndex = 2;
-            label1.Text = "Calcule os lados";
+            label1.Text = "Calculadora";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(22, 96);
+            textBox2.Location = new Point(66, 61);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(38, 23);
             textBox2.TabIndex = 3;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(22, 131);
+            textBox3.Location = new Point(110, 61);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(38, 23);
             textBox3.TabIndex = 4;
             // 
             // button1
             // 
-            button1.Location = new Point(6, 200);
+            button1.Location = new Point(66, 90);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 5;
-            button1.Text = "ENTER";
+            button1.Text = "Resultado";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // Resultado
             // 
             Resultado.AutoSize = true;
-            Resultado.Location = new Point(75, 120);
+            Resultado.Location = new Point(200, 65);
             Resultado.Name = "Resultado";
             Resultado.Size = new Size(12, 15);
             Resultado.TabIndex = 6;
@@ -88,7 +88,7 @@
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(22, 167);
+            textBox4.Location = new Point(154, 61);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(38, 23);
             textBox4.TabIndex = 7;
@@ -106,7 +106,7 @@
             Controls.Add(label1);
             Controls.Add(textBox1);
             Name = "Form2";
-            Text = "Form2";
+            Text = "Calculadora";
             ResumeLayout(false);
             PerformLayout();
         }

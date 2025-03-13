@@ -39,12 +39,12 @@
             menuStrip1 = new MenuStrip();
             toolStripMenuItem1 = new ToolStripMenuItem();
             newToolStripMenuItem = new ToolStripMenuItem();
+            quadradoRetanguloToolStripMenuItem = new ToolStripMenuItem();
             radioButton1 = new RadioButton();
             radioButton2 = new RadioButton();
             radioButton3 = new RadioButton();
             radioButton4 = new RadioButton();
             label2 = new Label();
-            quadradoRetanguloToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -139,9 +139,16 @@
             // newToolStripMenuItem
             // 
             newToolStripMenuItem.Name = "newToolStripMenuItem";
-            newToolStripMenuItem.Size = new Size(186, 22);
+            newToolStripMenuItem.Size = new Size(180, 22);
             newToolStripMenuItem.Text = "new";
             newToolStripMenuItem.Click += newToolStripMenuItem_Click;
+            // 
+            // quadradoRetanguloToolStripMenuItem
+            // 
+            quadradoRetanguloToolStripMenuItem.Name = "quadradoRetanguloToolStripMenuItem";
+            quadradoRetanguloToolStripMenuItem.Size = new Size(180, 22);
+            quadradoRetanguloToolStripMenuItem.Text = "Perimetros";
+            quadradoRetanguloToolStripMenuItem.Click += quadradoRetanguloToolStripMenuItem_Click;
             // 
             // radioButton1
             // 
@@ -200,13 +207,6 @@
             label2.TabIndex = 13;
             label2.Text = "   ";
             // 
-            // quadradoRetanguloToolStripMenuItem
-            // 
-            quadradoRetanguloToolStripMenuItem.Name = "quadradoRetanguloToolStripMenuItem";
-            quadradoRetanguloToolStripMenuItem.Size = new Size(186, 22);
-            quadradoRetanguloToolStripMenuItem.Text = "Quadrado/Retangulo";
-            quadradoRetanguloToolStripMenuItem.Click += quadradoRetanguloToolStripMenuItem_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -228,7 +228,8 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Form1";
-            Text = "Form1";
+            Text = "Calculadora";
+            Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

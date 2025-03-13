@@ -140,7 +140,12 @@ namespace Calculadora
         {
             Form2 form = new Form2();
             form.Show();
-            
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 
