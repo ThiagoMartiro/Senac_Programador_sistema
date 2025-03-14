@@ -39,8 +39,31 @@ namespace Calculadora
                 Resultado.Text += $"\nPerímetro: {perimetroQuadrado}";
                 Resultado.Text += $"\nÁrea: {areaQuadrado}";
             }
+
+                        // Verifica se é um triângulo
+            if (doublelbl1 + doublelbl2 > doublelbl3 &&
+                doublelbl1 + doublelbl3 > doublelbl2 &&
+                doublelbl2 + doublelbl3 > doublelbl1)
+            {
+                Resultado.Text = "Triângulo";
+                double perimetroTriangulo = doublelbl1 + doublelbl2 + doublelbl3; // Perímetro do triângulo
+                Resultado.Text += $"\nPerímetro: {perimetroTriangulo}";
+
+                // Calcula a área usando a Fórmula de Heron
+                double semiPerimetro = perimetroTriangulo / 2;
+                double areaTriangulo = Math.Sqrt(semiPerimetro *
+                    (semiPerimetro - doublelbl1) *
+                    (semiPerimetro - doublelbl2) *
+                    (semiPerimetro - doublelbl3));
+                Resultado.Text += $"\nÁrea: {areaTriangulo}";
+            }
+            else
+            {
+                Resultado.Text = "Os valores fornecidos não formam um triângulo.";
+            }
+
             // Verifica se é um retângulo (dois lados iguais e dois diferentes)
-            else if (doublelbl1 == doublelbl3 && doublelbl2 == doublelbl4)
+            if (doublelbl1 == doublelbl3 && doublelbl2 == doublelbl4)
             {
                 Resultado.Text = "Retângulo";
                 double perimetroRetangulo = 2 * (doublelbl1 + doublelbl2);  // Perímetro de um retângulo

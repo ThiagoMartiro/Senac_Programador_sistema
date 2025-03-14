@@ -16,3 +16,4 @@ D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.pd
 D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.genruntimeconfig.cache
 D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\ref\Calculadora.dll
 D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.Form2.resources
+D:\Senac_Programador_sistema\Calculadora\obj\Debug\net8.0-windows\Calculadora.Form3.resources

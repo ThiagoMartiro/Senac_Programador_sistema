@@ -45,6 +45,7 @@
             radioButton3 = new RadioButton();
             radioButton4 = new RadioButton();
             label2 = new Label();
+            circunferenciasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -131,7 +132,7 @@
             // 
             // toolStripMenuItem1
             // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, quadradoRetanguloToolStripMenuItem });
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, quadradoRetanguloToolStripMenuItem, circunferenciasToolStripMenuItem });
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(50, 20);
             toolStripMenuItem1.Text = "Menu";
@@ -207,6 +208,13 @@
             label2.TabIndex = 13;
             label2.Text = "   ";
             // 
+            // circunferenciasToolStripMenuItem
+            // 
+            circunferenciasToolStripMenuItem.Name = "circunferenciasToolStripMenuItem";
+            circunferenciasToolStripMenuItem.Size = new Size(180, 22);
+            circunferenciasToolStripMenuItem.Text = "Circunferencias";
+            circunferenciasToolStripMenuItem.Click += circunferenciasToolStripMenuItem_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -255,5 +263,6 @@
         private RadioButton radioButton4;
         private Label label2;
         private ToolStripMenuItem quadradoRetanguloToolStripMenuItem;
+        private ToolStripMenuItem circunferenciasToolStripMenuItem;
     }
 }
