@@ -136,7 +136,7 @@ namespace Calculadora
             resultado.Text = res.ToString();
         }
 
-        private void quadradoRetanguloToolStripMenuItem_Click(object sender, EventArgs e)
+        private void quadradoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form2 form = new Form2();
             form.Show();
@@ -148,11 +148,16 @@ namespace Calculadora
 
         }
 
-        private void circunferenciasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void esferaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form3 form = new Form3();
             form.Show();
         }
+
+        
+        
+
+        
     }
 
 

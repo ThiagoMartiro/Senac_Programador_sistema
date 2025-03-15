@@ -29,84 +29,104 @@
         private void InitializeComponent()
         {
             textBox1 = new TextBox();
-            label1 = new Label();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
             button1 = new Button();
             Resultado = new Label();
             textBox4 = new TextBox();
+            menuStrip1 = new MenuStrip();
+            esferaToolStripMenuItem = new ToolStripMenuItem();
+            quadradoToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(22, 61);
+            textBox1.Location = new Point(56, 54);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(38, 23);
             textBox1.TabIndex = 0;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(71, 32);
-            label1.Name = "label1";
-            label1.Size = new Size(70, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Calculadora";
-            // 
             // textBox2
             // 
-            textBox2.Location = new Point(66, 61);
+            textBox2.Location = new Point(12, 54);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(38, 23);
             textBox2.TabIndex = 3;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(110, 61);
+            textBox3.Location = new Point(12, 83);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(38, 23);
             textBox3.TabIndex = 4;
             // 
             // button1
             // 
-            button1.Location = new Point(66, 90);
+            button1.Location = new Point(12, 152);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(110, 23);
             button1.TabIndex = 5;
-            button1.Text = "Resultado";
+            button1.Text = "Calcular";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // Resultado
             // 
             Resultado.AutoSize = true;
-            Resultado.Location = new Point(200, 65);
+            Resultado.Location = new Point(103, 69);
             Resultado.Name = "Resultado";
-            Resultado.Size = new Size(12, 15);
+            Resultado.Size = new Size(15, 15);
             Resultado.TabIndex = 6;
-            Resultado.Text = "?";
+            Resultado.Text = "=";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(154, 61);
+            textBox4.Location = new Point(56, 83);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(38, 23);
             textBox4.TabIndex = 7;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { esferaToolStripMenuItem, quadradoToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(194, 24);
+            menuStrip1.TabIndex = 15;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // esferaToolStripMenuItem
+            // 
+            esferaToolStripMenuItem.Name = "esferaToolStripMenuItem";
+            esferaToolStripMenuItem.Size = new Size(82, 20);
+            esferaToolStripMenuItem.Text = "Calculadora";
+            esferaToolStripMenuItem.Click += esferaToolStripMenuItem_Click;
+            // 
+            // quadradoToolStripMenuItem
+            // 
+            quadradoToolStripMenuItem.Name = "quadradoToolStripMenuItem";
+            quadradoToolStripMenuItem.Size = new Size(50, 20);
+            quadradoToolStripMenuItem.Text = "Esfera";
+            quadradoToolStripMenuItem.Click += quadradoToolStripMenuItem_Click;
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(194, 291);
+            Controls.Add(menuStrip1);
             Controls.Add(textBox4);
             Controls.Add(Resultado);
             Controls.Add(button1);
             Controls.Add(textBox3);
             Controls.Add(textBox2);
-            Controls.Add(label1);
             Controls.Add(textBox1);
             Name = "Form2";
-            Text = "Calculadora";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = " ";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -114,11 +134,13 @@
         #endregion
 
         private TextBox textBox1;
-        private Label label1;
         private TextBox textBox2;
         private TextBox textBox3;
         private Button button1;
         private Label Resultado;
         private TextBox textBox4;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem esferaToolStripMenuItem;
+        private ToolStripMenuItem quadradoToolStripMenuItem;
     }
 }

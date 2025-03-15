@@ -40,7 +40,7 @@ namespace Calculadora
                 Resultado.Text += $"\nÁrea: {areaQuadrado}";
             }
 
-                        // Verifica se é um triângulo
+            // Verifica se é um triângulo
             if (doublelbl1 + doublelbl2 > doublelbl3 &&
                 doublelbl1 + doublelbl3 > doublelbl2 &&
                 doublelbl2 + doublelbl3 > doublelbl1)
@@ -84,6 +84,18 @@ namespace Calculadora
 
 
 
+        }
+
+        private void esferaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 form = new Form1();
+            form.Show();
+        }
+
+        private void quadradoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 form = new Form3();
+            form.Show();
         }
     }
 }  

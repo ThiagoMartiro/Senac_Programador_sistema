@@ -16,7 +16,7 @@ namespace Calculadora
         {
             InitializeComponent();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             double raio;
             if (double.TryParse(raioTextBox.Text, out raio) && raio > 0)
@@ -50,6 +50,18 @@ namespace Calculadora
             {
                 resultadoLabel.Text = "Insira um raio válido.";
             }
+        }
+
+        private void esferaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 form = new Form1();
+            form.Show();
+        }
+
+        private void quadradoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 form = new Form2();
+            form.Show();
         }
     }
 }
