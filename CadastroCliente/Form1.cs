@@ -7,11 +7,13 @@ namespace CadastroCliente
     {
         List<Cliente> clientes = [];
 
+        private int proximoId = 0;---------------------------------------
+
         public Form1()
         {
             InitializeComponent();
 
-            ClassEndereco enderecoMartiro = new ClassEndereco()
+            Endereco enderecoMartiro = new Endereco()
             {
                 lougradouro = "casa",
                 numero = "798",
@@ -24,7 +26,7 @@ namespace CadastroCliente
             Cliente Martiro = new Cliente() { id = 0, dataNascimento = "25.06.98", Etnia = Etnia.Preto, Genero = Genero.Masculino, endereco = enderecoMartiro, email = "thiagoxxt@gmail.com", };
             clientes.Add(Martiro);
 
-            ClassEndereco enderecoNilza = new ClassEndereco()
+            Endereco enderecoNilza = new Endereco()
             {
                 lougradouro = "casa",
                 numero = "157",
@@ -37,7 +39,7 @@ namespace CadastroCliente
             Cliente Oliveira = new Cliente() { id = 1, dataNascimento = "13.01.1999", Etnia = Etnia.Preto, Genero = Genero.Feminio, endereco = enderecoNilza, email = "nilza@gmail.com", };
             clientes.Add(Oliveira);
 
-            ClassEndereco enderecoBoteco = new ClassEndereco()
+            Endereco enderecoBoteco = new Endereco()
             {
                 lougradouro = "casa",
                 numero = "658",
@@ -56,37 +58,60 @@ namespace CadastroCliente
 
         private void buttonCadastro_Click(object sender, EventArgs e)
         {
+            // Capturando os dados do cadastro
             string nome = textNome.Text;
             string telefone = maskedTextTele.Text;
             string email = textBoxEmail.Text;
             string nomesocial = textBoxNomeSocial.Text;
-            string etnia = comboBoxEtnia.SelectedItem.ToString();
+            Etnia etnia = (Etnia)comboBoxEtnia.SelectedIndex;
+            Genero genero = (Genero)comboBoxGenero.SelectedIndex;
             string data = maskedTextData.Text;
-            bool pf = radioButtonPF.Checked;
-            bool pj = radioButtonPJ.Checked;
+            TipoCliente tipo = (TipoCliente)groupBox1.TabIndex;
             bool estrangeiro = checkBoxEST.Checked;
-            string genero = comboBoxGenero.SelectedItem.ToString();
 
-            //endereço
-
-            string logradouro = textBoxLogradouro.Text;
+            // Endereço
+            string lougradouro = textBoxLogradouro.Text;
             string numero = textBoxNumero.Text;
             string complemento = textBoxComplemento.Text;
             string bairro = textBoxBairro.Text;
             string municipio = textBoxMunicipio.Text;
-            string estado = comboBoxEstado.SelectedItem.ToString();
-            string cep = maskedTextData.Text;
+            string estado = comboBoxEstado.SelectedItem != null ? comboBoxEstado.SelectedItem.ToString() : "Não especificado";
+            string cep = maskedTextBoxCEP.Text;
 
-            if (string.IsNullOrWhiteSpace(nome))
+            // Criando um objeto do cadastro e adicionando à lista
+            Cliente novoCadastro = new Cliente()
             {
-                mensagem.Text = "É NECESSARIO PREENCHER TODOS OS CAMPOS!!!";
-                mensagem.ForeColor = Color.Red;
-                return;
-            }
+                nome = nome,
+                telefone = telefone,
+                email = email,
+                nomeSocial = nomesocial,
+                Etnia = etnia,
+                dataNascimento = data,
+                tipo = tipo,
+                estrangeiro = estrangeiro,
+                Genero = genero,
+
+            };
+
+            Endereco novoEndereco = new Endereco()
+            {
+                lougradouro = lougradouro,
+                numero = numero,
+                complemento = complemento,
+                bairro = bairro,
+                municipio = municipio,
+                estado = estado,
+                cep = cep
+            };
+
+            clientes.Add(novoCadastro);
+
+            // Mensagem de confirmação
+            MessageBox.Show("Cadastro adicionado com sucesso!", "Confirmação");
         }
-
-
     }
 
+  
 
 }
+

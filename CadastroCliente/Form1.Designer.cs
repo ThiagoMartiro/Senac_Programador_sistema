@@ -64,6 +64,8 @@
             maskedTextBoxCEP = new MaskedTextBox();
             buttonCadastro = new Button();
             mensagem = new Label();
+            groupBox1 = new GroupBox();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // textNome
@@ -100,8 +102,8 @@
             // comboBoxGenero
             // 
             comboBoxGenero.FormattingEnabled = true;
-            comboBoxGenero.Items.AddRange(new object[] { "Feminio", "Masculino", "Viadasso", "Outros" });
-            comboBoxGenero.Location = new Point(567, 115);
+            comboBoxGenero.Items.AddRange(new object[] { "Feminio", "Masculino", "Outros" });
+            comboBoxGenero.Location = new Point(537, 144);
             comboBoxGenero.Name = "comboBoxGenero";
             comboBoxGenero.Size = new Size(135, 23);
             comboBoxGenero.TabIndex = 4;
@@ -116,7 +118,7 @@
             // comboBoxEtnia
             // 
             comboBoxEtnia.FormattingEnabled = true;
-            comboBoxEtnia.Items.AddRange(new object[] { "Preto", "Branco", "OUTROUS" });
+            comboBoxEtnia.Items.AddRange(new object[] { "Preto", "Branco", "Outros" });
             comboBoxEtnia.Location = new Point(107, 139);
             comboBoxEtnia.Name = "comboBoxEtnia";
             comboBoxEtnia.Size = new Size(135, 23);
@@ -125,7 +127,7 @@
             // checkBoxEST
             // 
             checkBoxEST.AutoSize = true;
-            checkBoxEST.Location = new Point(681, 72);
+            checkBoxEST.Location = new Point(537, 86);
             checkBoxEST.Name = "checkBoxEST";
             checkBoxEST.Size = new Size(15, 14);
             checkBoxEST.TabIndex = 7;
@@ -134,7 +136,8 @@
             // radioButtonPF
             // 
             radioButtonPF.AutoSize = true;
-            radioButtonPF.Location = new Point(537, 58);
+            radioButtonPF.Checked = true;
+            radioButtonPF.Location = new Point(104, 52);
             radioButtonPF.Name = "radioButtonPF";
             radioButtonPF.Size = new Size(38, 19);
             radioButtonPF.TabIndex = 8;
@@ -181,7 +184,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(505, 119);
+            label4.Location = new Point(442, 144);
             label4.Name = "label4";
             label4.Size = new Size(45, 15);
             label4.TabIndex = 13;
@@ -208,18 +211,17 @@
             // radioButtonPJ
             // 
             radioButtonPJ.AutoSize = true;
-            radioButtonPJ.Location = new Point(537, 83);
+            radioButtonPJ.Location = new Point(104, 20);
             radioButtonPJ.Name = "radioButtonPJ";
             radioButtonPJ.Size = new Size(35, 19);
             radioButtonPJ.TabIndex = 16;
-            radioButtonPJ.TabStop = true;
             radioButtonPJ.Text = "PJ";
             radioButtonPJ.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(448, 72);
+            label7.Location = new Point(6, 37);
             label7.Name = "label7";
             label7.Size = new Size(86, 15);
             label7.TabIndex = 17;
@@ -228,7 +230,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(606, 72);
+            label8.Location = new Point(442, 85);
             label8.Name = "label8";
             label8.Size = new Size(66, 15);
             label8.TabIndex = 19;
@@ -371,16 +373,28 @@
             // mensagem
             // 
             mensagem.AutoSize = true;
-            mensagem.Location = new Point(587, 371);
+            mensagem.Location = new Point(442, 125);
             mensagem.Name = "mensagem";
             mensagem.Size = new Size(0, 15);
             mensagem.TabIndex = 36;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(radioButtonPJ);
+            groupBox1.Controls.Add(radioButtonPF);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Location = new Point(596, 53);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(146, 77);
+            groupBox1.TabIndex = 37;
+            groupBox1.TabStop = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(groupBox1);
             Controls.Add(mensagem);
             Controls.Add(buttonCadastro);
             Controls.Add(label16);
@@ -399,8 +413,6 @@
             Controls.Add(textBoxLogradouro);
             Controls.Add(label9);
             Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(radioButtonPJ);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -408,7 +420,6 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(Nome);
-            Controls.Add(radioButtonPF);
             Controls.Add(checkBoxEST);
             Controls.Add(comboBoxEtnia);
             Controls.Add(textBoxNomeSocial);
@@ -419,6 +430,8 @@
             Controls.Add(textNome);
             Name = "Form1";
             Text = "Ficha Cadastral";
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -461,5 +474,6 @@
         private MaskedTextBox maskedTextBoxCEP;
         private Button buttonCadastro;
         private Label mensagem;
+        private GroupBox groupBox1;
     }
 }
