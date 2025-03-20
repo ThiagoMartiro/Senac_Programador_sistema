@@ -94,7 +94,7 @@
             // maskedTextTele
             // 
             maskedTextTele.Location = new Point(107, 53);
-            maskedTextTele.Mask = "(99) 000-0000";
+            maskedTextTele.Mask = "(99) 00000-0000";
             maskedTextTele.Name = "maskedTextTele";
             maskedTextTele.Size = new Size(190, 23);
             maskedTextTele.TabIndex = 3;
