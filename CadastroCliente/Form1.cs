@@ -8,7 +8,8 @@ namespace CadastroCliente
     {
         List<Cliente> clientes = new List<Cliente>();
 
-        private int proximoId = 0;
+        
+        private readonly BindingSource BindingSource = [];
 
         public Form1()
         {
@@ -22,9 +23,10 @@ namespace CadastroCliente
                 bairro = "cidade ademar",
                 cep = "04403110",
                 estado = "São Paulo",
-                municipio = "SP"
+                municipio = "SP",
+                
             };
-            Cliente Martiro = new Cliente() { id = proximoId, dataNascimento = "25.06.98", Etnia = Etnia.Preto, Genero = Genero.Masculino, endereco = enderecoMartiro, email = "thiagoxxt@gmail.com", };
+            Cliente Martiro = new Cliente() { id = 0, nome = "Thiago", telefone = "(11)93272-1278", nomeSocial = "Pretola", dataNascimento = "25.06.98", Etnia = Etnia.Preto, Genero = Genero.Masculino, endereco = enderecoMartiro, email = "thiagoxxt@gmail.com", };
             clientes.Add(Martiro);
 
             Endereco enderecoNilza = new Endereco()
@@ -35,9 +37,10 @@ namespace CadastroCliente
                 bairro = "Vila inglesa",
                 cep = "050050501",
                 estado = "São Paulo",
-                municipio = "SP"
+                municipio = "SP",
+                
             };
-            Cliente Oliveira = new Cliente() { id = proximoId, dataNascimento = "13.01.1999", Etnia = Etnia.Preto, Genero = Genero.Feminio, endereco = enderecoNilza, email = "nilza@gmail.com", };
+            Cliente Oliveira = new Cliente() { id = 1, nome = "Claudio", telefone = "(11)93272-1278", nomeSocial = "Oliveira", dataNascimento = "13.01.1999", Etnia = Etnia.Preto, Genero = Genero.Feminio, endereco = enderecoNilza, email = "nilza@gmail.com", };
             clientes.Add(Oliveira);
 
             Endereco enderecoBoteco = new Endereco()
@@ -48,10 +51,22 @@ namespace CadastroCliente
                 bairro = "Vila inglesa",
                 cep = "15646756",
                 estado = "São Paulo",
-                municipio = "SP"
+                municipio = "SP",
+                
             };
-            Cliente Claudio = new Cliente() { id = proximoId, dataNascimento = "13.09.1980", Etnia = Etnia.Preto, Genero = Genero.Masculino, endereco = enderecoBoteco, email = "claudio@gmail.com", };
+            Cliente Claudio = new Cliente() { id = 2, nome = "Pedro", telefone = "(11)93272-1278",nomeSocial = "careca", dataNascimento = "13.09.1980", Etnia = Etnia.Preto, Genero = Genero.Masculino, endereco = enderecoBoteco, email = "claudio@gmail.com", };
             clientes.Add(Claudio);
+
+            BindingSource.DataSource = clientes;
+            dataGridView1.DataSource = BindingSource; 
+        }
+
+        public int NovoId()
+        {
+            int id = clientes[clientes.Count - 1].id;
+            int idNovo = id + 1;
+
+            return idNovo;
         }
 
         private void buttonCadastro_Click(object sender, EventArgs e)
@@ -64,7 +79,18 @@ namespace CadastroCliente
             Etnia etnia = (Etnia)comboBoxEtnia.SelectedIndex;
             Genero genero = (Genero)comboBoxGenero.SelectedIndex;
             string data = maskedTextData.Text;
-            TipoCliente tipo = (TipoCliente)groupBox1.TabIndex;
+            TipoCliente tipo;
+            if (radioButtonPF.Checked==true)
+            {
+                tipo = TipoCliente.PF;
+
+            }
+            else
+            {
+                tipo = TipoCliente.PJ;
+            }
+                
+
             bool estrangeiro = checkBoxEST.Checked;
 
             if (string.IsNullOrEmpty(nome))
@@ -126,7 +152,7 @@ namespace CadastroCliente
             // Criando um objeto do cadastro e adicionando à lista
             Cliente novoCadastro = new Cliente()
             {
-                id = proximoId++,
+                id=NovoId(),
                 nome = nome,
                 telefone = telefone,
                 email = email,
@@ -136,6 +162,7 @@ namespace CadastroCliente
                 tipo = tipo,
                 estrangeiro = estrangeiro,
                 Genero = genero,
+
 
             };
 
@@ -152,6 +179,7 @@ namespace CadastroCliente
 
 
             clientes.Add(novoCadastro);
+            BindingSource.ResetBindings(false);
 
             // Mensagem de confirmação
             MessageBox.Show("Cadastro adicionado com sucesso!", "Confirmação");

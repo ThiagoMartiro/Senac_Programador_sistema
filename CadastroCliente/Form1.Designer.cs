@@ -47,7 +47,6 @@
             radioButtonPJ = new RadioButton();
             label7 = new Label();
             label8 = new Label();
-            label9 = new Label();
             textBoxLogradouro = new TextBox();
             label10 = new Label();
             label11 = new Label();
@@ -65,7 +64,9 @@
             buttonCadastro = new Button();
             mensagem = new Label();
             groupBox1 = new GroupBox();
+            dataGridView1 = new DataGridView();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // textNome
@@ -236,18 +237,9 @@
             label8.TabIndex = 19;
             label8.Text = "Estrangeiro";
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(22, 186);
-            label9.Name = "label9";
-            label9.Size = new Size(56, 15);
-            label9.TabIndex = 20;
-            label9.Text = "Endereço";
-            // 
             // textBoxLogradouro
             // 
-            textBoxLogradouro.Location = new Point(107, 226);
+            textBoxLogradouro.Location = new Point(107, 210);
             textBoxLogradouro.Name = "textBoxLogradouro";
             textBoxLogradouro.Size = new Size(190, 23);
             textBoxLogradouro.TabIndex = 21;
@@ -255,7 +247,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(18, 229);
+            label10.Location = new Point(18, 213);
             label10.Name = "label10";
             label10.Size = new Size(69, 15);
             label10.TabIndex = 22;
@@ -264,7 +256,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(18, 258);
+            label11.Location = new Point(18, 242);
             label11.Name = "label11";
             label11.Size = new Size(51, 15);
             label11.TabIndex = 24;
@@ -272,7 +264,7 @@
             // 
             // textBoxNumero
             // 
-            textBoxNumero.Location = new Point(107, 255);
+            textBoxNumero.Location = new Point(107, 239);
             textBoxNumero.Name = "textBoxNumero";
             textBoxNumero.Size = new Size(70, 23);
             textBoxNumero.TabIndex = 23;
@@ -280,7 +272,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(17, 287);
+            label12.Location = new Point(17, 271);
             label12.Name = "label12";
             label12.Size = new Size(84, 15);
             label12.TabIndex = 26;
@@ -288,14 +280,14 @@
             // 
             // textBoxComplemento
             // 
-            textBoxComplemento.Location = new Point(107, 284);
+            textBoxComplemento.Location = new Point(107, 268);
             textBoxComplemento.Name = "textBoxComplemento";
             textBoxComplemento.Size = new Size(190, 23);
             textBoxComplemento.TabIndex = 25;
             // 
             // textBoxBairro
             // 
-            textBoxBairro.Location = new Point(107, 313);
+            textBoxBairro.Location = new Point(107, 297);
             textBoxBairro.Name = "textBoxBairro";
             textBoxBairro.Size = new Size(190, 23);
             textBoxBairro.TabIndex = 27;
@@ -303,7 +295,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(18, 316);
+            label13.Location = new Point(18, 300);
             label13.Name = "label13";
             label13.Size = new Size(38, 15);
             label13.TabIndex = 28;
@@ -312,7 +304,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(18, 345);
+            label14.Location = new Point(18, 329);
             label14.Name = "label14";
             label14.Size = new Size(61, 15);
             label14.TabIndex = 30;
@@ -320,7 +312,7 @@
             // 
             // textBoxMunicipio
             // 
-            textBoxMunicipio.Location = new Point(107, 342);
+            textBoxMunicipio.Location = new Point(107, 326);
             textBoxMunicipio.Name = "textBoxMunicipio";
             textBoxMunicipio.Size = new Size(190, 23);
             textBoxMunicipio.TabIndex = 29;
@@ -328,7 +320,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(22, 379);
+            label15.Location = new Point(22, 363);
             label15.Name = "label15";
             label15.Size = new Size(42, 15);
             label15.TabIndex = 32;
@@ -338,7 +330,7 @@
             // 
             comboBoxEstado.FormattingEnabled = true;
             comboBoxEstado.Items.AddRange(new object[] { "AC ", "AL ", "AP ", "AM ", "BA ", "CE ", "DF ", "ES ", "GO ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN ", "RS ", "RO ", "RR ", "SC ", "SP ", "SE ", "TO" });
-            comboBoxEstado.Location = new Point(107, 371);
+            comboBoxEstado.Location = new Point(107, 355);
             comboBoxEstado.Name = "comboBoxEstado";
             comboBoxEstado.Size = new Size(99, 23);
             comboBoxEstado.TabIndex = 31;
@@ -346,7 +338,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(426, 230);
+            label16.Location = new Point(480, 218);
             label16.Name = "label16";
             label16.Size = new Size(28, 15);
             label16.TabIndex = 34;
@@ -354,7 +346,7 @@
             // 
             // maskedTextBoxCEP
             // 
-            maskedTextBoxCEP.Location = new Point(465, 226);
+            maskedTextBoxCEP.Location = new Point(537, 210);
             maskedTextBoxCEP.Mask = "00000-000";
             maskedTextBoxCEP.Name = "maskedTextBoxCEP";
             maskedTextBoxCEP.Size = new Size(190, 23);
@@ -389,11 +381,20 @@
             groupBox1.TabIndex = 37;
             groupBox1.TabStop = false;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(537, 271);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(240, 150);
+            dataGridView1.TabIndex = 38;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView1);
             Controls.Add(groupBox1);
             Controls.Add(mensagem);
             Controls.Add(buttonCadastro);
@@ -411,7 +412,6 @@
             Controls.Add(textBoxNumero);
             Controls.Add(label10);
             Controls.Add(textBoxLogradouro);
-            Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -432,6 +432,7 @@
             Text = "Ficha Cadastral";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -457,7 +458,6 @@
         private RadioButton radioButtonPJ;
         private Label label7;
         private Label label8;
-        private Label label9;
         private TextBox textBoxLogradouro;
         private Label label10;
         private Label label11;
@@ -475,5 +475,6 @@
         private Button buttonCadastro;
         private Label mensagem;
         private GroupBox groupBox1;
+        private DataGridView dataGridView1;
     }
 }
