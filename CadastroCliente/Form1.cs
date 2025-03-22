@@ -1,5 +1,6 @@
 using System.Diagnostics.Eventing.Reader;
 using System.Net.Sockets;
+using System.Runtime.Intrinsics.X86;
 using System.Text.RegularExpressions;
 
 namespace CadastroCliente
@@ -8,7 +9,7 @@ namespace CadastroCliente
     {
         List<Cliente> clientes = new List<Cliente>();
 
-        
+
         private readonly BindingSource BindingSource = [];
 
         public Form1()
@@ -24,9 +25,9 @@ namespace CadastroCliente
                 cep = "04403110",
                 estado = "São Paulo",
                 municipio = "SP",
-                
+
             };
-            Cliente Martiro = new Cliente() { id = 0, nome = "Thiago", telefone = "(11)93272-1278", nomeSocial = "Pretola", dataNascimento = "25.06.98", Etnia = Etnia.Preto, Genero = Genero.Masculino, endereco = enderecoMartiro, email = "thiagoxxt@gmail.com", };
+            Cliente Martiro = new Cliente() { id = 0, nome = "Thiago", telefone = "(11) 93272-1278", nomeSocial = "Pretola", dataNascimento = "25.06.98", Etnia = Etnia.Preto, Genero = Genero.Masculino, endereco = enderecoMartiro, email = "thiagoxxt@gmail.com", };
             clientes.Add(Martiro);
 
             Endereco enderecoNilza = new Endereco()
@@ -38,9 +39,9 @@ namespace CadastroCliente
                 cep = "050050501",
                 estado = "São Paulo",
                 municipio = "SP",
-                
+
             };
-            Cliente Oliveira = new Cliente() { id = 1, nome = "Claudio", telefone = "(11)93272-1278", nomeSocial = "Oliveira", dataNascimento = "13.01.1999", Etnia = Etnia.Preto, Genero = Genero.Feminio, endereco = enderecoNilza, email = "nilza@gmail.com", };
+            Cliente Oliveira = new Cliente() { id = 1, nome = "Claudio", telefone = "(11) 93272-1278", nomeSocial = "Oliveira", dataNascimento = "13.01.1999", Etnia = Etnia.Preto, Genero = Genero.Feminio, endereco = enderecoNilza, email = "nilza@gmail.com", };
             clientes.Add(Oliveira);
 
             Endereco enderecoBoteco = new Endereco()
@@ -52,13 +53,13 @@ namespace CadastroCliente
                 cep = "15646756",
                 estado = "São Paulo",
                 municipio = "SP",
-                
+
             };
-            Cliente Claudio = new Cliente() { id = 2, nome = "Pedro", telefone = "(11)93272-1278",nomeSocial = "careca", dataNascimento = "13.09.1980", Etnia = Etnia.Preto, Genero = Genero.Masculino, endereco = enderecoBoteco, email = "claudio@gmail.com", };
+            Cliente Claudio = new Cliente() { id = 2, nome = "Pedro", telefone = "(11) 93272-1278", nomeSocial = "careca", dataNascimento = "13.09.1980", Etnia = Etnia.Preto, Genero = Genero.Masculino, endereco = enderecoBoteco, email = "claudio@gmail.com", };
             clientes.Add(Claudio);
 
             BindingSource.DataSource = clientes;
-            dataGridView1.DataSource = BindingSource; 
+            dataGridView1.DataSource = BindingSource;
         }
 
         public int NovoId()
@@ -80,7 +81,7 @@ namespace CadastroCliente
             Genero genero = (Genero)comboBoxGenero.SelectedIndex;
             string data = maskedTextData.Text;
             TipoCliente tipo;
-            if (radioButtonPF.Checked==true)
+            if (radioButtonPF.Checked == true)
             {
                 tipo = TipoCliente.PF;
 
@@ -89,7 +90,7 @@ namespace CadastroCliente
             {
                 tipo = TipoCliente.PJ;
             }
-                
+
 
             bool estrangeiro = checkBoxEST.Checked;
 
@@ -137,35 +138,16 @@ namespace CadastroCliente
                 return;
             }
 
-
-
-
             // Endereço
             string lougradouro = textBoxLogradouro.Text;
             string numero = textBoxNumero.Text;
             string complemento = textBoxComplemento.Text;
             string bairro = textBoxBairro.Text;
             string municipio = textBoxMunicipio.Text;
-            string estado = comboBoxEstado.SelectedItem != null ? comboBoxEstado.SelectedItem.ToString() : "Não especificado";
+            string estado = comboBoxEstado.Text;
             string cep = maskedTextBoxCEP.Text;
 
             // Criando um objeto do cadastro e adicionando à lista
-            Cliente novoCadastro = new Cliente()
-            {
-                id=NovoId(),
-                nome = nome,
-                telefone = telefone,
-                email = email,
-                nomeSocial = nomesocial,
-                Etnia = etnia,
-                dataNascimento = data,
-                tipo = tipo,
-                estrangeiro = estrangeiro,
-                Genero = genero,
-
-
-            };
-
             Endereco novoEndereco = new Endereco()
             {
                 lougradouro = lougradouro,
@@ -175,10 +157,29 @@ namespace CadastroCliente
                 municipio = municipio,
                 estado = estado,
                 cep = cep
+
+
             };
 
+            Cliente novoCadastro = new Cliente()
+            {
+                id = NovoId(),
+                nome = nome,
+                telefone = telefone,
+                email = email,
+                nomeSocial = nomesocial,
+                Etnia = etnia,
+                dataNascimento = data,
+                tipo = tipo,
+                estrangeiro = estrangeiro,
+                Genero = genero,
+                endereco = novoEndereco
+
+
+            };
 
             clientes.Add(novoCadastro);
+
             BindingSource.ResetBindings(false);
 
             // Mensagem de confirmação
@@ -196,10 +197,64 @@ namespace CadastroCliente
             maskedTextBoxCEP.Clear();
 
         }
-    }
+
+        private void SalvarClientesNoArquivo()
+        {
+            using (StreamWriter writer = new StreamWriter("clientes.txt"))
+            {
+                foreach (var cliente in clientes)
+                {
+                    writer.WriteLine($"{cliente.id}|{cliente.nome}|{cliente.telefone}|{cliente.email}|{cliente.nomeSocial}|{cliente.Etnia}|{cliente.Genero}|{cliente.dataNascimento}|{cliente.tipo}|{cliente.estrangeiro}|{cliente.endereco.lougradouro}|{cliente.endereco.numero}|{cliente.endereco.complemento}|{cliente.endereco.bairro}|{cliente.endereco.municipio}|{cliente.endereco.estado}|{cliente.endereco.cep}");
+                }
+            }
+        }
+
+        private void CarregarClientesDoArquivo()
+        {
+            if (!File.Exists("clientes.txt")) return;
+
+            using (StreamReader reader = new StreamReader("clientes.txt"))
+            {
+                string linha;
+                while ((linha = reader.ReadLine()) != null)
+                {
+                    var partes = linha.Split('|');
+                    Cliente cliente = new Cliente()
+                    {
+                        id = int.Parse(partes[0]),
+                        nome = partes[1],
+                        telefone = partes[2],
+                        email = partes[3],
+                        nomeSocial = partes[4],
+                        Etnia = (Etnia)Enum.Parse(typeof(Etnia), partes[5]),
+                        Genero = (Genero)Enum.Parse(typeof(Genero), partes[6]),
+                        dataNascimento = partes[7],
+                        tipo = (TipoCliente)Enum.Parse(typeof(TipoCliente), partes[8]),
+                        estrangeiro = bool.Parse(partes[9]),
+                        endereco = new Endereco()
+                        {
+                            lougradouro = partes[10],
+                            numero = partes[11],
+                            complemento = partes[12],
+                            bairro = partes[13],
+                            municipio = partes[14],
+                            estado = partes[15],
+                            cep = partes[16]
+                        }
+                    };
+
+                    clientes.Add(cliente);
+                }
 
 
-  
 
-}
+
+
+
+            }
+
+        }
+}   }
+
+
 

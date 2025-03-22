@@ -346,7 +346,7 @@
             // 
             // maskedTextBoxCEP
             // 
-            maskedTextBoxCEP.Location = new Point(537, 210);
+            maskedTextBoxCEP.Location = new Point(534, 210);
             maskedTextBoxCEP.Mask = "00000-000";
             maskedTextBoxCEP.Name = "maskedTextBoxCEP";
             maskedTextBoxCEP.Size = new Size(190, 23);
@@ -383,11 +383,17 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToOrderColumns = true;
+            dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(537, 271);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.Size = new Size(240, 150);
-            dataGridView1.TabIndex = 38;
+            dataGridView1.TabIndex = 3;
             // 
             // Form1
             // 
