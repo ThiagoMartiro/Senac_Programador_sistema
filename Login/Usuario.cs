@@ -8,5 +8,7 @@ namespace Login
 {
     internal class Usuario
     {
+        public string Email { get; set; }
+        public string Senha { get; set; }
     }
 }

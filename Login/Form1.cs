@@ -1,129 +1,171 @@
-using System.DirectoryServices.ActiveDirectory;
-using System.Drawing;
+using System.Linq;
 
 namespace Login
 {
-    public partial class Form1 : Form
+    public partial class FormLogin : Form
     {
+        // Declaração de uma lista de usuários
+        List<Usuario> usuarios = new List<Usuario>();
 
-        List<string> listaUsuario = new List<string>() { "neymar.jr", "Thiago", "naruto" };
-        List<string> listaSenha = new List<string>() { "Bruna", "1234", "7777" };
-        public Form1()
+        // Construtor da classe
+        public FormLogin()
         {
             InitializeComponent();
+
+            // Adicionando usuários na lista
+            usuarios.Add(new Usuario() { Email = "neymar.jr@email.com", Senha = "Brun@123" });
+            usuarios.Add(new Usuario() { Email = "pablo.vitar@email.com", Senha = "12345Abc!" });
+            usuarios.Add(new Usuario() { Email = "sukuna.silva@email.com", Senha = "Sete7Sete!" });
         }
 
-        private void Entrar_Click(object sender, EventArgs e)
+        // Método executado ao clicar no botão Entrar
+        private void buttonEntrar_Click(object sender, EventArgs e)
         {
+            // Busca o usuário e senha digitados
+            string usuarioBuscado = textBoxUsuario.Text;
+            string senha = textBoxSenha.Text;
 
-            String usuarioBuscado = TxtUsuario.Text; //Estamos_Pegando_Usuario_Do_Forms
-            String senha = TxtSenha.Text; //Estamos_Pegando_Senha_Do_Forms
-
-            if (string.IsNullOrWhiteSpace(usuarioBuscado))//Se_o_Usuario_Estiver_Nulo_Ou_Vazio//Utilizamos_IF_Para_CondiçãoVerdadeiraOuFalsa
+            // Verifica se o usuário foi digitado
+            if (string.IsNullOrWhiteSpace(usuarioBuscado))
             {
-                LbResultado.Text = "Preencha o usuário";//Usamos_Para_Mostrar_O_Resultado
-                LbResultado.ForeColor = Color.Red;
-                return;//Faz_O_Lopin_Para_estiver_vazio
-            }
-            if (senha == null || senha == "")//Se_a_Senha_Estiver_Nulo_Ou_Vazio//Utilizamos_IF_Para_CondiçãoVerdadeiraOuFalsa
-            {
-                LbResultado.Text = "Senha é obrigatório!!!";
-                LbResultado.ForeColor = Color.Red;
-                return;//Faz_O_Lopin_Para_estiver_vazio
+                // Exibe mensagem de erro
+                labelResultado.Text = "Usuario eh obrigatorio!!!";
+                // Muda a cor da mensagem para vermelho
+                labelResultado.ForeColor = Color.Red;
+                // Encerra a execução do método
+                return;
             }
 
-            int posicaoUsuarioEncontrado = -1;
-            for (int i = 0; i < listaUsuario.Count; i++)
+            // Verifica se a senha foi digitada
+            if (string.IsNullOrWhiteSpace(senha))
             {
-                if (usuarioBuscado == listaUsuario[i])
+                // Exibe mensagem de erro
+                labelResultado.Text = "Senha eh obrigatoria!!!";
+                // Muda a cor da mensagem para vermelho
+                labelResultado.ForeColor = Color.Red;
+                // Encerra a execução do método
+                return;
+            }
+
+            // Verifica se o usuário e senha estão corretos
+            // Inicializa a variável autenticado como false
+            bool autenticado = false;
+            // Percorre a lista de usuários usando um laço de repetição
+            for (int i = 0; i < usuarios.Count; i++) {
+                // Verifica se o usuário e senha digitados são iguais ao usuário e senha da lista
+                if (usuarios[i].Email == usuarioBuscado && usuarios[i].Senha == senha)
                 {
-                    posicaoUsuarioEncontrado = i;
-
+                    // Se forem iguais, muda a variável autenticado para true
+                    autenticado = true;
                 }
             }
-            if (posicaoUsuarioEncontrado == -1 || senha != "1234")
+
+            // Verifica se o usuário e senha não foram encontrados
+            if (!autenticado)
             {
-                LbResultado.Text = "Usuário ou Senha incorretos...";
-                LbResultado.ForeColor = Color.Red;
+                // Exibe mensagem de erro
+                labelResultado.Text = "Usuario ou Senha incorretos...";
+                // Muda a cor da mensagem para vermelho
+                labelResultado.ForeColor = Color.Red;
+                // Encerra a execução do método
                 return;
             }
-            else
-            {
-                LbResultado.Text = "Autenticado com sucesso!";
-                LbResultado.ForeColor = Color.Green;
-            }
 
+            // Se o usuário e senha foram encontrados, exibe mensagem de sucesso
+            labelResultado.Text = "Autenticado com sucesso!";
+            // Muda a cor da mensagem para verde
+            labelResultado.ForeColor = Color.Green;
 
+            // Limpa os campos de texto
+            textBoxUsuario.Clear();
+            textBoxSenha.Clear();
         }
 
-
-
-        private void New_Click(object sender, EventArgs e)
+        // Método executado ao clicar no botão Cadastrar
+        private void buttonCadastrar_Click(object sender, EventArgs e)
         {
-            String NovoUs = Newus.Text;
-            String NovaSe = Novasenha.Text;
-            
-            if (string.IsNullOrWhiteSpace(NovoUs))
+            // Busca o novo usuário e senha digitados
+            string novoUsuario = textBoxNovoUsuario.Text;
+            string novaSenha = textBoxNovaSenha.Text;
+
+            // Verifica se o novo usuário foi digitado
+            if (string.IsNullOrWhiteSpace(novoUsuario))
             {
-                resultado.Text = "Usuario obrigatorio";
-            }
-            if (string.IsNullOrWhiteSpace(NovaSe))
-            {
-                resultado.Text = "Senha Obrigatoria";
+                labelResultado.Text = "Usuario eh obrigatorio!!!";
                 return;
             }
 
-            if (NovaSe.Length < 8)
+            // Verifica se a nova senha foi digitada
+            if (string.IsNullOrWhiteSpace(novaSenha))
             {
-                resultado.Text = "É necessario a senha ter pelo menos 8 digitos";
+                labelResultado.Text = "Senha eh obrigatoria!!!";
                 return;
             }
 
-            if (!NovaSe.Any(char.IsUpper))
+            // Verifica se a senha tem pelo menos 8 caracteres
+            if (novaSenha.Length < 8)
             {
-                resultado.Text = "Senha precisa ter no mínimo uma letra maiuscula";
+                labelResultado.Text = "A senha deve ter pelo menos 8 caracteres";
                 return;
             }
 
-            if (!NovaSe.Any(char.IsLower))
+            // Verifica se a senha tem pelo menos uma letra maiúscula
+            if (!novaSenha.Any(char.IsUpper))
             {
-                resultado.Text = "Senha precisa ter no mínimo uma letra minuscula";
+                labelResultado.Text = "A senha deve ter pelo menos uma letra maiuscula";
                 return;
             }
 
-            if (!NovaSe.Any(char.IsNumber))
+            // Verifica se a senha tem pelo menos uma letra minúscula
+            if (!novaSenha.Any(char.IsLower))
             {
-                resultado.Text = "Senha precisa ter no mínimo um número";
+                labelResultado.Text = "A senha deve ter pelo menos uma letra minuscula";
                 return;
             }
 
-            if (!NovaSe.Any(char.IsPunctuation))
+            // Verifica se a senha tem pelo menos um número
+            if (!novaSenha.Any(char.IsNumber))
             {
-                resultado.Text = "Senha precisa ter um caracter especial ";
+                labelResultado.Text = "A senha deve ter pelo menos um numero";
                 return;
             }
 
-
-            Boolean Usuario_encontrado = false;
-            for (int i = 0; i < listaUsuario.Count; i++)
+            // Verifica se a senha tem pelo menos um caracter especial
+            if (!novaSenha.Any(char.IsPunctuation) && !novaSenha.Any(char.IsSymbol) && !novaSenha.Contains('@'))
             {
-                if (NovoUs == listaUsuario[i])
+                labelResultado.Text = "A senha deve ter pelo menos um caracter especial";
+                return;
+            }
+
+            // Verifica se a senha tem espaços em branco
+            if (novaSenha.Any(char.IsWhiteSpace))
+            {
+                labelResultado.Text = "A senha nao deve ter espacos em branco";
+                return;
+            }
+
+            // Verifica se o novo usuário já está cadastrado
+            bool encontrado = false;
+            for (int i = 0; i < usuarios.Count; i++)
+            {
+                if (usuarios[i].Email == novoUsuario)
                 {
-                    Usuario_encontrado = true;
+                    encontrado = true;
                 }
             }
-            if (Usuario_encontrado == false)
+
+            // Se o usuário já estiver cadastrado, exibe mensagem de erro
+            if (encontrado)
             {
-                listaUsuario.Add(NovoUs);
-                listaSenha.Add(NovaSe);
-                resultado.Text = "Cadastrado com sucesso";
-            }
-            else
-            {
-                resultado.Text = "Ja existe";
+                labelResultado.Text = "Já existe um usuário cadastrado";
+                return;
             }
 
+            // Adiciona o novo usuário na lista
+            usuarios.Add(new Usuario() { Email = novoUsuario, Senha = novaSenha });
+            labelResultado.Text = "Usuário cadastrado com sucesso!";
+            textBoxNovoUsuario.Clear();
+            textBoxNovaSenha.Clear();
         }
-
     }
 }
