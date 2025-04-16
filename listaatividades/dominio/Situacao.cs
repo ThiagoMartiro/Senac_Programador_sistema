@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace listaatividades.dominio
+﻿namespace ListaAtividades.dominio
 {
-    internal class Situacao
+    internal enum Situacao
     {
+        Pendente,
+        Realizando,
+        Concluido
     }
 }

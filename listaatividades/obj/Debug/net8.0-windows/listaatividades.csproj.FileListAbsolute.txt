@@ -1,0 +1,7 @@
+D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.Form1.resources
+D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.csproj.GenerateResource.cache
+D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.GeneratedMSBuildEditorConfig.editorconfig
+D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.AssemblyInfoInputs.cache
+D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.AssemblyInfo.cs
+D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.csproj.CoreCompileInputs.cache
+D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.sourcelink.json
