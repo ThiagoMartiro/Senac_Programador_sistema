@@ -1,6 +1,6 @@
 ﻿namespace listaatividades
 {
-    partial class Form1
+    partial class ListadeAtividades:Form
     {
         /// <summary>
         ///  Required designer variable.

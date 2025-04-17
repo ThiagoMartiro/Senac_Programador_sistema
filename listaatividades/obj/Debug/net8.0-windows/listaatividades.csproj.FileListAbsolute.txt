@@ -5,3 +5,6 @@ D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaativi
 D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.AssemblyInfo.cs
 D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.csproj.CoreCompileInputs.cache
 D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.sourcelink.json
+D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.csproj.AssemblyReference.cache
+D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.Repositorio.ListadeAtividades.resources
+D:\Senac_Programador_sistema\listaatividades\obj\Debug\net8.0-windows\listaatividades.CriarAtividade.resources
